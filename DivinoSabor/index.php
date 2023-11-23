@@ -18,7 +18,10 @@
 
     <link rel="stylesheet" href="./assets/css/style.css">
 
+
+    <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Divino Sabor | Dashboard</title>
 </head>
@@ -28,26 +31,40 @@
 
 
     <!-- menu responsivo -->
+    <div class="footer-father-f-f">
 
-    <div class="container-fluid">
-        <div class="toggle" id="toggle" onclick="menu-expand()">
-            <i class="fa-solid fa-plus" id="plus"></i>
-        </div>
-        <div class="menu" id="menu">
-            <a href="">
-                <i class="fa-solid fa-list"></i>
-            </a>
-            <a href="">
-                <i class="fa-solid fa-money-bill-trend-up"></i>
-            </a>
-            <a href="">
-                <i class="fas fa-warehouse"></i>
-            </a>
-            <a href="">
-                <i class="fa-solid fa-chart-column"></i>
-            </a>
-        </div>
-        <!-- <div id="showpage">
+        <?php
+
+        // Arquivo com o rodapé do site
+        include_once './php/navbar.php';
+
+        ?>
+
+        <div class="footer-father-f">
+            <div class="footer-father">
+
+
+
+
+                <div class="container-fluid">
+                    <div class="toggle" id="toggle" onclick="menu-expand()">
+                        <i class="fa-solid fa-plus" id="plus"></i>
+                    </div>
+                    <div class="menu" id="menu">
+                        <a href="">
+                            <i class="fa-solid fa-list"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa-solid fa-money-bill-trend-up"></i>
+                        </a>
+                        <a href="">
+                            <i class="fas fa-warehouse"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </a>
+                    </div>
+                    <!-- <div id="showpage">
 
             <?php
 
@@ -56,14 +73,21 @@
             ?>
 
         </div> -->
+                </div>
+
+                
+
+
+            </div>
+        </div>
+
+        <?php
+
+                // Arquivo com o rodapé do site
+                include_once './php/footer.php';
+
+                ?>
     </div>
-
-    <?php
-
-    // Arquivo com o rodapé do site
-    include_once './php/footer.php';
-
-    ?>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 

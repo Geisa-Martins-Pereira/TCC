@@ -727,11 +727,15 @@ function expand(){
 const navBar = document.querySelector(".navbar");
 const allLi = document.querySelectorAll("li");
 
+
 allLi.forEach((li, index) => {    
     li.addEventListener("click" , e =>{
         e.preventDefault(); //prevenir de enviar
         navBar.querySelector(".active").classList.remove("active");
+        navBar.querySelector(".icon").style.display = ("block");
+        navBar.querySelector(".icon") 
         li.classList.add("active")
+
 
         const indicator = document.querySelector(".indicator");
         indicator.style.transform = 'translateX(calc(${index * 90}px))';
