@@ -732,14 +732,14 @@ allLi.forEach((li, index) => {
     li.addEventListener("click" , e =>{
         e.preventDefault(); //prevenir de enviar
         navBar.querySelector(".active").classList.remove("active");
-        navBar.querySelector(".icon").style.display = ("block");
-        navBar.querySelector(".icon") 
+        // navBar.querySelector(".icon").style.display = ("block");
+        // navBar.querySelector(".icon") 
         li.classList.add("active")
 
 
         const indicator = document.querySelector(".indicator");
-        indicator.style.transform = 'translateX(calc(${index * 90}px))';
-        console.log(index)
+        indicator.style.transform = `translateX(calc(${index * 90}px))`;
+        // console.log(index)
     });
 });
 

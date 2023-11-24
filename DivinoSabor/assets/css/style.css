@@ -95,11 +95,12 @@ ul li a i.activeIcon{
 .navbar ul .indicator{
     position: absolute;
     bottom: -19px;
-    left: 30px;
+    left: 32px;
     height: 50px;
-    width: 30px;
+    width: 25px;
     background: #9e77f1;
     border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.67, -0.55, 0.265, 1.55);
 }
 
 ul .indicator::before{
@@ -107,7 +108,7 @@ ul .indicator::before{
     position: absolute;
     left: -17px;
     bottom: 50%;
-    height: 22px;
+    height: 23px;
     width: 20px;
     background: white;
     border-bottom-right-radius: 20px;
@@ -119,7 +120,7 @@ ul .indicator::after{
     position: absolute;
     right: -17px;
     bottom: 50%;
-    height: 22px;
+    height: 23px;
     width: 20px;
     background: white;
     border-bottom-left-radius: 20px;
