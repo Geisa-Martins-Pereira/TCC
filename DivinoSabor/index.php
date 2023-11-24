@@ -36,9 +36,9 @@
         <?php
 
         // Arquivo com o rodapé do site
-        include_once './php/time.php';
+        
         include_once './php/navbar.php';
-
+        include_once './php/time.php';
         ?>
 
         <div class="footer-father-f">

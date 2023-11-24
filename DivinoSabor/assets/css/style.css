@@ -232,6 +232,34 @@ ul .indicator::after{
     transform: scale(1.1);
 }
 
+/* HORAS */
+
+.clock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9e77f1;
+    padding: 110px;
+    border-radius: 10px;
+    z-index: -5;
+}
+
+.horas{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90px;
+    gap: 15px;
+    flex-direction: row;
+}
+
+#Date{
+    font-size: 1.3em !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
 
 /* FOOTER */

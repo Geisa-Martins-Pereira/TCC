@@ -707,6 +707,8 @@ function ativGeral(id, acao, page) {
 
 }
 
+// MOVIMENTO TOGGLE GIRATÓRIO
+
 var i = 0;
 
 function expand(){
@@ -742,6 +744,36 @@ allLi.forEach((li, index) => {
         // console.log(index)
     });
 });
+
+
+// RELÓGIO COM DATA
+
+function clock(){
+    var monthNames = ["Jan.","Fev.", "Mar.", "Abril", "Maio", "Jun.", "Jul.", "Agos.", "Set.", "Out.", "Nov.", "Dez."];
+    var dayNames=["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"];
+
+    var Icon = ["<i class='bx bxs-balloon'></i>"];
+
+    var today = new Date();
+
+    document.getElementById('Date').innerHTML = (dayNames[today.getDay()] + " " + Icon + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' +today.getFullYear());
+
+    var h = today.getHours();
+    var m = today.getMinutes();
+    // var s = today.getSeconds();
+    var day = h<11 ? 'AM' : 'PM';
+
+    document.getElementById('hours').innerHTML = h;
+    document.getElementById('min').innerHTML = m;
+    // document.getElementById('sec').innerHTML = s;
+
+    h = h<10? '0'+h: h;
+    m = m<10? '0'+m: m;
+    // s = s<10? '0'+s: s;
+
+
+
+}var inter = setInterval(clock,400);
 
 
 
