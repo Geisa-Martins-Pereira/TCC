@@ -15,6 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+<!-- 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <!-- CSS normal -->
 
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -36,7 +40,7 @@
         <?php
 
         // Arquivo com o rodapé do site
-        
+
         include_once './php/navbar.php';
         include_once './php/time.php';
         ?>
@@ -44,39 +48,65 @@
         <div class="footer-father-f">
             <div class="footer-father">
 
-
-
-
                 <div class="container-fluid">
-                    <div class="toggle" id="toggle" onclick="menu-expand()">
-                        <i class="fa-solid fa-plus" id="plus"></i>
+
+                    <div id="controle-menu-toggle" class="
+                    <?php
+                    // fazer com que o menu permaneça de lado com a página carregada para layout
+                     if (!empty($_SESSION['page'])) {
+                        echo 'menu-lado';
+                    }
+                    ?>
+                    ">
+                        <div class="toggle" id="toggle" onclick="menu-expand()">
+                            <i class="fa-solid fa-plus" id="plus"></i>
+                        </div>
+                        
+                        <div class="menu" id="menu">
+                            <a href="#" class="linkMenu" idMenu="listarPedidos">
+                                <i class="fa-solid fa-list"></i>
+                            </a>
+                            <a href="#" class="linkMenu" idMenu="listarFinanceiro">
+                                <i class="fa-solid fa-money-bill-trend-up"></i>
+                            </a>
+                            <a href="#" class="linkMenu" idMenu="listarEstoque">
+                                <i class="fas fa-warehouse"></i>
+                            </a>
+                            <a href="#" class="linkMenu" idMenu="listarEstatisticas">
+                                <i class="fa-solid fa-chart-column"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="menu" id="menu">
-                        <a href="">
-                            <i class="fa-solid fa-list"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-solid fa-money-bill-trend-up"></i>
-                        </a>
-                        <a href="">
-                            <i class="fas fa-warehouse"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-solid fa-chart-column"></i>
-                        </a>
+
+
+                    <div id="showpage">
+                        <?php
+
+// se existe, tem página mostrando
+// código para continuar na página para alterar layout
+if (!empty($_SESSION['page'])) {
+    $page = $_SESSION['page'];
+    if ($page == 'listarPedidos') {
+        include_once './php/listarPedidos.php';
+    }
+}
+
+                        // if (!empty($_GET['page'])) {
+                        //     // faz com que se estiver verdadeiro, o menu vai para o lado com uma classe existente apenas para isso
+
+                        //     $_SESSION['menuDrag'] = 'Verdadeiro';
+
+                        //     if ($_GET['page'] == 'listarPedidos') {
+                        //         include_once './php/listarPedidos.php';
+                        //     }
+                        // } else {              
+                        //     $_SESSION['menuDrag'] = 'Falso';                                        
+                        // }
+                        ?>
                     </div>
-                    <!-- <div id="showpage">
-
-            <?php
-
-            // include_once './php/listarPedidos.php';
-
-            ?>
-
-        </div> -->
                 </div>
 
-                
+
 
 
             </div>
@@ -84,10 +114,10 @@
 
         <?php
 
-                // Arquivo com o rodapé do site
-                include_once './php/footer.php';
+        // Arquivo com o rodapé do site
+        include_once './php/footer.php';
 
-                ?>
+        ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>

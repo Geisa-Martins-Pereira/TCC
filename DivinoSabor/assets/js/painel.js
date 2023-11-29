@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-    masks();
+    // fazer as mascars funcionarem
+    // masks();
 
     $('#modalAddCliente').on('shown.bs.modal', function () {
         $('input#nomeCliente').trigger('focus')
@@ -14,7 +15,8 @@ $(document).ready(function () {
     // msgDelete();
 
 
-    // navegação na página
+    // navegação na página 
+    // menu que vai para o lado ao clicar nas opções
     $('.linkMenu').click(function (event) {
         event.preventDefault();
 
@@ -24,19 +26,38 @@ $(document).ready(function () {
             acao: menuClicado,
         };
 
+        var menuToggle = document.getElementById('controle-menu-toggle');
+
+        var clockToggle = document.getElementById('controle-clock-toggle');
+
+        var clockNavToggle = document.getElementById('clock-nav');
+
         $.ajax({
             type: "POST",
             dataType: 'html',
             url: 'controle.php',
             data: dados,
             beforeSend: function () {
-                loading();
+                // loading();
             }, success: function (retorno) {
-                if (retorno != 'Você não está logado!') {
+                if (retorno != 'Home') {
                     setTimeout(function () {
-                        loadingEnd();
+                        // loadingEnd();
                         $('div#showpage').html(retorno);
-                    }, 1000);
+                        if (!menuToggle.classList.contains("menu-lado")) {
+                            menuToggle.classList.toggle("menu-lado");
+                        };  
+
+                        if (!clockToggle.classList.contains("clocka")) {
+                            clockToggle.classList.toggle("clocka");
+                        }; 
+                        
+                        if (!clockNavToggle.classList.contains("clock-son")) {
+                            clockNavToggle.classList.toggle("clock-son");
+                        };                        
+                    }, 300);
+                } else if (retorno == 'Home') {
+                    location.reload(); 
                 } else {
                     msgGeral('ERRO: ' + retorno + ' Tente novamente mais tarde.', 'error');
                 }
@@ -45,8 +66,14 @@ $(document).ready(function () {
         });
     });
 
+    
 
 });
+
+
+
+
+// função de loading a página
 
 function loading() {
     Swal.fire({
@@ -82,6 +109,8 @@ function listarPage(listar) {
     });
 }
 
+
+// funções de mask
 function masks() {
     $('.maskTelefone').inputmask({
         mask: '(99) 9 9999-9999'
@@ -141,10 +170,6 @@ function addCliente() {
             dadosForm.push(
                 { name: 'acao', value: 'addCliente' },
             )
-
-            // var dados = {
-            //     acao: 'addCliente',
-            // }
 
             $.ajax({
                 type: 'POST',
@@ -206,10 +231,6 @@ function addTipoPag() {
                 { name: 'acao', value: 'addTipoPag' },
             )
 
-            // var dados = {
-            //     acao: 'addCliente',
-            // }
-
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -270,10 +291,6 @@ function addPag() {
                 { name: 'acao', value: 'addPag' },
             )
 
-            // var dados = {
-            //     acao: 'addCliente',
-            // }
-
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -315,6 +332,7 @@ function addPag() {
 }
 
 
+// função de adicionar item na dashboard
 var sendAddProduto = false;
 
 function addProduto() {
@@ -522,6 +540,8 @@ function dataTipoPag(id, modal) {
 
 }
 
+
+// alterar item na dashboad
 var sendAltTipoPag = false;
 
 function altTipoPag() {
@@ -586,11 +606,7 @@ function altTipoPag() {
 }
 
 
-
-
-
-
-
+// msg para deletar item na dashboard
 function msgDelete(id, acao, page) {
 
     Swal.fire({
@@ -650,10 +666,7 @@ function msgDelete(id, acao, page) {
 
 
 
-
-
-
-// novo ativar 
+// ativar item na dashboard
 function ativGeral(id, acao, page) {
 
     Swal.fire({
@@ -733,7 +746,8 @@ const allLi = document.querySelectorAll("li");
 allLi.forEach((li, index) => {    
     li.addEventListener("click" , e =>{
         e.preventDefault(); //prevenir de enviar
-        navBar.querySelector(".active").classList.remove("active");
+        var navActive = navBar.querySelector(".active");
+        navActive.classList.remove("active");
         // navBar.querySelector(".icon").style.display = ("block");
         // navBar.querySelector(".icon") 
         li.classList.add("active")
@@ -741,7 +755,8 @@ allLi.forEach((li, index) => {
 
         const indicator = document.querySelector(".indicator");
         indicator.style.transform = `translateX(calc(${index * 90}px))`;
-        // console.log(index)
+        console.log(index)
+        console.log(li);
     });
 });
 
@@ -770,10 +785,38 @@ function clock(){
     h = h<10? '0'+h: h;
     m = m<10? '0'+m: m;
     // s = s<10? '0'+s: s;
+}
+var inter = setInterval(clock,400);
+
+// RELÓGIO COM DATA DE LADO
 
 
 
-}var inter = setInterval(clock,400);
+function clocka(){
+    var monthNames = ["Jan.","Fev.", "Mar.", "Abril", "Maio", "Jun.", "Jul.", "Agos.", "Set.", "Out.", "Nov.", "Dez."];
+    var dayNames=["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"];
+
+    var Icon = ["<i class='bx bxs-balloon'></i>"];
+
+    var today = new Date();
+
+    document.getElementById('Datea').innerHTML = (dayNames[today.getDay()] + " " + Icon + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' +today.getFullYear());
+
+    var h = today.getHours();
+    var m = today.getMinutes();
+    // var s = today.getSeconds();
+    var day = h<11 ? 'AM' : 'PM';
+
+    document.getElementById('hoursa').innerHTML = h;
+    document.getElementById('mina').innerHTML = m;
+    // document.getElementById('sec').innerHTML = s;
+
+    h = h<10? '0'+h: h;
+    m = m<10? '0'+m: m;
+    // s = s<10? '0'+s: s;
+}
+
+var inter = setInterval(clocka,400);
 
 
 

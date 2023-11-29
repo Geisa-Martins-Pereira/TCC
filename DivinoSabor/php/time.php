@@ -1,13 +1,17 @@
 <div class="container">
     <div class="clock">
-        <div class="clock-son">
-            <div id="Date">
-                Segunda-feira <i class='bx bxs-balloon'></i> 24 de Nov. de 2023
+        <div id="controle-clock-toggle" class="<?php
+                    if (!empty($_SESSION['page'])) {
+                        echo 'clocka';
+                    }
+                    ?>">
+            <div id="Datea" class="clock-time">
+                  
             </div>
             <div class="horas">
-                <div id="hours">05</div>
-                <div id="space">:</div>
-                <div id="min">20</div>
+                <div id="hoursa" class="clock-time"></div>
+                <div id="space" class="clock-time">:</div>
+                <div id="mina" class="clock-time"></div>
             </div>
         </div>
     </div>
